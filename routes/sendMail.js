@@ -18,7 +18,7 @@ const sendMail = async (userEmail , name , message , phone) => {
 
     const adminMail = {
         from: process.env.MAIL_USERNAME,
-        to: "akashrs7190@gmail.com",
+        to: "siliconvista.org.enquiry@gmail.com",
         replyTo: userEmail, 
         subject: "New Enquiry from Website",
         html: `
