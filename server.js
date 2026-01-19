@@ -8,12 +8,13 @@ import cors from "cors";
 
 import sender from './routes/sender.js';
 
-
-
-
 const app = express();
 app.use(bodyParser.json());
-app.use(cors());
+
+app.use(cors({
+  origin: "https://vlsi-application-git-main-akash-715s-projects.vercel.app",
+  methods: ["GET", "POST"],
+}));
 
 const PORT = 8080;
 
