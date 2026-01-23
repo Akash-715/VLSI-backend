@@ -12,18 +12,23 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use(cors({
-  origin: "https://vlsi-application-git-main-akash-715s-projects.vercel.app",
+  origin: [
+    "https://vlsi-application-git-main-akash-715s-projects.vercel.app",
+    "http://localhost:5173"
+  ],
   methods: ["GET", "POST"],
+  credentials: true
 }));
 
 const PORT = 8080 ;
-
-app.listen(PORT , (req , res) => {
-    console.log(`Server listening on the PORT: http://localhost:${PORT} `);
-});
 
 app.get('/' , (req , res) =>{
     res.send("Hello from server!!");
 })
 
 app.use("/contact" , sender);
+
+app.listen(PORT , (req , res) => {
+    console.log(`Server listening on the PORT: http://localhost:${PORT} `);
+});
+
