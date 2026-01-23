@@ -16,7 +16,7 @@ app.use(cors({
   methods: ["GET", "POST"],
 }));
 
-const PORT = 8080;
+const PORT = 8080 ;
 
 app.listen(PORT , (req , res) => {
     console.log(`Server listening on the PORT: http://localhost:${PORT} `);

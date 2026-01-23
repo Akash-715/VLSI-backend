@@ -5,17 +5,14 @@ import { text } from "express";
 const sendMail = async (userEmail , name , message , phone) => {
 
 
-  const transporter = nodemailer.createTransport({
-      host: "smtp.ethereal.email",
-      port: 587,
-      secure: false,
-    auth: {
-      user: process.env.MAIL_USERNAME,
-      pass: process.env.MAIL_PASSWORD
-    },
-    logger: true,
-    debug: true,
-  });
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.MAIL_USERNAME,
+    pass: process.env.MAIL_PASSWORD
+  }
+});
+
 
 
     const adminMail = {
