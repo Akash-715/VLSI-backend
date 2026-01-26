@@ -5,7 +5,6 @@ const sendMail = async (userEmail, name, message, phone) => {
     access_key: process.env.WEB3FORMS_KEY,
     ajax: true,
 
-    // ADMIN EMAIL (must be Web3Forms verified email)
     email: "akashms7117@gmail.com",
 
     subject: "New Enquiry from Website",
