@@ -1,15 +1,18 @@
+import fetch from "node-fetch";
+
 const sendMail = async (userEmail, name, message, phone) => {
   const payload = {
     access_key: process.env.WEB3FORMS_KEY,
+    ajax: true,
+
+    // ADMIN EMAIL (must be Web3Forms verified email)
+    email: "akashms7117@gmail.com",
 
     subject: "New Enquiry from Website",
+
     from_name: name,
     from_email: userEmail,
 
-    // ADMIN WILL GET THE ENQUIRY
-    email: "siliconvista.org.enquiry@gmail.com",
-
-    // User's actual message
     message: `
       Name: ${name}
       Email: ${userEmail}
@@ -17,26 +20,31 @@ const sendMail = async (userEmail, name, message, phone) => {
       Message: ${message}
     `,
 
-    // AUTO-RESPONSE FOR USER
     reply_to: userEmail,
+
     autoresponse: `
       Hi ${name},
 
       Thank you for contacting SiliconVista!
-      We’ve received your enquiry and will get back to you shortly.
+      We received your enquiry and will respond shortly.
 
       Regards,
       SiliconVista Team
-    `
+    `,
   };
 
-  await fetch("https://api.web3forms.com/submit", {
+  const res = await fetch("https://api.web3forms.com/submit", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(payload)
+    body: JSON.stringify(payload),
   });
+
+  const result = await res.json();
+  console.log("WEB3FORMS RESULT:", result);
+
+  return result;
 };
 
 export default sendMail;
